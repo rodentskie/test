@@ -7,5 +7,6 @@ export default async (): Promise<Config.InitialOptions> => {
     testEnvironment: 'node',
     verbose: true,
     globalTeardown: './jest.teardown.ts',
+    testTimeout: 10000,
   };
 };
