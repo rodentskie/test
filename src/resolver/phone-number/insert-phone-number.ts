@@ -2,6 +2,19 @@ import { Request, Response } from 'express';
 import validateNumber from '../../functions/phone-validate';
 import PhonesModel from '../../models/phone';
 
+async function getNextSequence() {
+  let seq = 1;
+
+  const data = await PhonesModel.findOne({}, 'seq')
+    .sort({ createdAt: -1 })
+    .limit(1);
+
+  if (!data) return seq;
+
+  seq = data.seq + 1;
+  return seq;
+}
+
 const insertPhoneNumber = async (req: Request, res: Response) => {
   const { phone } = req.body;
 
@@ -28,18 +41,5 @@ const insertPhoneNumber = async (req: Request, res: Response) => {
     data,
   });
 };
-
-async function getNextSequence() {
-  let seq: number = 1;
-
-  const data = await PhonesModel.findOne({}, 'seq')
-    .sort({ createdAt: -1 })
-    .limit(1);
-
-  if (!data) return seq;
-
-  seq = data.seq + 1;
-  return seq;
-}
 
 export default insertPhoneNumber;

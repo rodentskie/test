@@ -11,8 +11,7 @@ const updatePhoneNumber = async (req: Request, res: Response) => {
     });
 
   const { id } = req.params;
-  const seq = parseInt(id);
-
+  const seq: number = parseInt(id, 10);
   const { check, newNumber } = validateNumber(phone);
 
   if (!check)

@@ -3,7 +3,7 @@ import PhonesModel from '../../models/phone';
 
 const deletePhoneNumber = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const seq = parseInt(id);
+  const seq = parseInt(id, 10);
 
   const data = await PhonesModel.findOne({ seq });
 
