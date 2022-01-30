@@ -1,12 +1,14 @@
 import { Schema, model } from 'mongoose';
 
 interface Phones {
+  seq: number;
   phone: string;
 }
 
 const schema = new Schema<Phones>(
   {
-    phone: String,
+    seq: { type: Number, default: 0 },
+    phone: { type: String, required: true },
   },
   {
     timestamps: true,
