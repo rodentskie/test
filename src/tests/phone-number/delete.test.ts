@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URL = `${process.env.BASE_URL}:${process.env.PORT}`;
+const port = process.env.PORT || 5000;
+const url = process.env.BASE_URL || 'http://localhost';
+
+const URL = `${url}:${port}`;
 
 describe('Insert phone test suite', () => {
   test('[DELETE] Successful delete of phone number.', async () => {
@@ -29,7 +32,7 @@ describe('Insert phone test suite', () => {
     });
     expect(insert.status).toBe(200);
 
-    const id = parseInt(insert.body.data.seq, 10) + 1;
+    const id = parseInt(insert.body.data.seq, 10) + 50;
 
     const res = await request(URL).delete(`/phone-number/${id}`);
 

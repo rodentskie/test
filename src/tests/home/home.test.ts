@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URL = `${process.env.BASE_URL}:${process.env.PORT}`;
+const port = process.env.PORT || 5000;
+const url = process.env.BASE_URL || 'http://localhost';
+
+const URL = `${url}:${port}`;
 
 describe('Home test suite', () => {
   test('[Get home status] must be 200', async () => {

@@ -5,10 +5,11 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "start": "node build/index",
+    "start": "node build/src/index",
     "test": "jest",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "build": "npx rimraf build/ && prettier --write **/* && tsc"
   },
   "repository": {
     "type": "git",

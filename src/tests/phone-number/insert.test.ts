@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const URL = `${process.env.BASE_URL}:${process.env.PORT}`;
+const port = process.env.PORT || 5000;
+const url = process.env.BASE_URL || 'http://localhost';
+
+const URL = `${url}:${port}`;
 
 describe('Insert phone test suite', () => {
   test('[POST] Successful insert of phone number prefix is 09.', async () => {

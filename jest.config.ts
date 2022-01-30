@@ -8,5 +8,6 @@ export default async (): Promise<Config.InitialOptions> => {
     verbose: true,
     globalTeardown: './jest.teardown.ts',
     testTimeout: 10000,
+    testMatch: ['**/src/**/*.test.ts'],
   };
 };
